@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Random rand = new Random();
 
         //Setting OnClickListeners for each of the  buttons
+        //region d4ImageButton
         d4ImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +67,9 @@ public class MainActivity extends AppCompatActivity {
             resultsTextView.setText(String.valueOf(buttonRand));
             }
         });
+        //endregion
 
+        //region d6ImageButton
         d6ImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +79,9 @@ public class MainActivity extends AppCompatActivity {
                 resultsTextView.setText(String.valueOf(buttonRand));
             }
         });
+        //endregion
 
+        //region d8ImageButton
         d8ImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +91,9 @@ public class MainActivity extends AppCompatActivity {
                 resultsTextView.setText(String.valueOf(buttonRand));
             }
         });
+        //endregion
 
+        //region d10ImageButton
         d10ImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,7 +103,9 @@ public class MainActivity extends AppCompatActivity {
                 resultsTextView.setText(String.valueOf(buttonRand));
             }
         });
+        //endregion
 
+        //region d12ImageButton
         d12ImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +115,9 @@ public class MainActivity extends AppCompatActivity {
                 resultsTextView.setText(String.valueOf(buttonRand));
             }
         });
+        //endregion
 
+        //region d20ImageButton
         d20ImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +127,9 @@ public class MainActivity extends AppCompatActivity {
                 resultsTextView.setText(String.valueOf(buttonRand));
             }
         });
+        //endregion
 
+        //region d100ImageButton
         d100ImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,7 +139,9 @@ public class MainActivity extends AppCompatActivity {
                 resultsTextView.setText(String.valueOf(buttonRand));
             }
         });
+        //endregion
 
+        //region Dice Decrement Button
         buttonDiceDecrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,6 +151,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        buttonDiceDecrement.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                diceAmount = 1;
+                diceAmountTextView.setText(String.valueOf(diceAmount + "d"));
+                return true;
+            }
+        });
+        //endregion
+
+        //region Dice Increment Button
         buttonDiceIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,6 +171,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        buttonDiceIncrement.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                diceAmount = 100;
+                diceAmountTextView.setText(String.valueOf(diceAmount + "d"));
+                return true;
+            }
+        });
+        //endregion
+
+        //region Modifier Decrement Button
         buttonModifierDecrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,6 +195,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        buttonModifierDecrement.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(modifier > 0)
+                    modifier = 0;
+                else
+                    modifier = -100;
+
+                if(modifier >= 0)
+                    modifierTextView.setText(String.valueOf("+" + modifier));
+                else
+                    modifierTextView.setText(String.valueOf(modifier));
+                return true;
+            }
+        });
+        //endregion
+
+        //region Modifier Increment Button
         buttonModifierIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,5 +225,19 @@ public class MainActivity extends AppCompatActivity {
                     modifierTextView.setText(String.valueOf(modifier));
             }
         });
+
+        buttonModifierIncrement.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(modifier < 0)
+                    modifier = 0;
+                else
+                    modifier = 100;
+
+                modifierTextView.setText(String.valueOf("+" + modifier));
+                return true;
+            }
+        });
+        //endregion
     }
 }
