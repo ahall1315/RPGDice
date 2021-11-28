@@ -1,26 +1,22 @@
 package com.example.rpgdice;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class DiceFragment extends Fragment {
 
     //Declare all view variables
-    /*
     ImageButton d4ImageButton;
     ImageButton d6ImageButton;
     ImageButton d8ImageButton;
@@ -35,62 +31,49 @@ public class MainActivity extends AppCompatActivity {
     TextView diceAmountTextView;
     TextView modifierTextView;
     TextView resultsTextView;
-     */
 
-
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-
-    /*
     int buttonRand = 0;
     int diceSides = 0;
     int diceAmount = 1;
     int total = 0;
     int modifier = 0;
-     */
 
-    private ViewPager mViewPager;
+    public DiceFragment(){
+
+
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_dice, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
 
         //Initialize all view variables
-        /*
-        d4ImageButton = findViewById(R.id.d4ImageButton);
-        d6ImageButton = findViewById(R.id.d6ImageButton);
-        d8ImageButton = findViewById(R.id.d8ImageButton);
-        d10ImageButton = findViewById(R.id.d10ImageButton);
-        d12ImageButton = findViewById(R.id.d12ImageButton);
-        d20ImageButton = findViewById(R.id.d20ImageButton);
-        d100ImageButton = findViewById(R.id.d100ImageButton);
-        buttonDiceDecrement = findViewById(R.id.diceDecrementButton);
-        buttonDiceIncrement = findViewById(R.id.diceIncrementButton);
-        buttonModifierDecrement = findViewById(R.id.modifierDecrementButton);
-        buttonModifierIncrement = findViewById(R.id.modifierIncrementButton);
-        diceAmountTextView = findViewById(R.id.diceAmountTextView);
-        modifierTextView = findViewById(R.id.modifierTextView);
-        resultsTextView = findViewById(R.id.resultsTextView);
-         */
+        d4ImageButton = view.findViewById(R.id.d4ImageButton);
+        d6ImageButton = view.findViewById(R.id.d6ImageButton);
+        d8ImageButton = view.findViewById(R.id.d8ImageButton);
+        d10ImageButton = view.findViewById(R.id.d10ImageButton);
+        d12ImageButton = view.findViewById(R.id.d12ImageButton);
+        d20ImageButton = view.findViewById(R.id.d20ImageButton);
+        d100ImageButton = view.findViewById(R.id.d100ImageButton);
+        buttonDiceDecrement = view.findViewById(R.id.diceDecrementButton);
+        buttonDiceIncrement = view.findViewById(R.id.diceIncrementButton);
+        buttonModifierDecrement = view.findViewById(R.id.modifierDecrementButton);
+        buttonModifierIncrement = view.findViewById(R.id.modifierIncrementButton);
+        diceAmountTextView = view.findViewById(R.id.diceAmountTextView);
+        modifierTextView = view.findViewById(R.id.modifierTextView);
+        resultsTextView = view.findViewById(R.id.resultsTextView);
 
-        tabLayout = findViewById(R.id.tabLayout);
-        viewPager = findViewById(R.id.viewpager);
-
-        tabLayout.setupWithViewPager(viewPager);
-
-        VPAdapter vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        vpAdapter.addFragment(new DiceFragment(), "dice");
-        vpAdapter.addFragment(new HistoryFragment(), "history");
-        viewPager.setAdapter(vpAdapter);
-
-        /*
         List<Integer> diceList = new ArrayList<>();
         Random rand = new Random();
-         */
 
         //Setting OnClickListeners for each of the  buttons
-        /*
         //region d4ImageButton
         d4ImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -385,8 +368,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //endregion
-
-         */
     }
-
 }
