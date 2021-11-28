@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
     TextView modifierTextView;
     TextView resultsTextView;
 
+    int buttonRand = 0;
     int diceSides = 0;
     int diceAmount = 1;
+    int total = 0;
     int modifier = 0;
 
     @Override
@@ -53,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         modifierTextView = findViewById(R.id.modifierTextView);
         resultsTextView = findViewById(R.id.resultsTextView);
 
-
+        List<Integer> diceList = new ArrayList<>();
         Random rand = new Random();
 
         //Setting OnClickListeners for each of the  buttons
@@ -62,9 +66,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             diceSides = 4;
+            diceList.clear();
+            total = 0;
 
-            int buttonRand = rand.nextInt(diceAmount * diceSides) + modifier + 1;
-            resultsTextView.setText(String.valueOf(buttonRand));
+            //Roll each dice
+            for (int i = 0; i < diceAmount; i++){
+                buttonRand = rand.nextInt(diceSides)+ 1;
+                diceList.add(buttonRand);
+            }
+
+            //Sum each dice
+            for (int i = 0; i < diceAmount; i++){
+                resultsTextView.setText(String.valueOf(total));
+                total = total + diceList.get(i);
+            }
+
+                //Add the modifier
+                total = total + modifier;
+
+                resultsTextView.setText(String.valueOf(total));
             }
         });
         //endregion
@@ -74,9 +94,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 diceSides = 6;
+                diceList.clear();
+                total = 0;
 
-                int buttonRand = rand.nextInt(diceAmount * diceSides) + modifier + 1;
-                resultsTextView.setText(String.valueOf(buttonRand));
+                //Roll each dice
+                for (int i = 0; i < diceAmount; i++){
+                    buttonRand = rand.nextInt(diceSides)+ 1;
+                    diceList.add(buttonRand);
+                }
+
+                //Sum each dice
+                for (int i = 0; i < diceAmount; i++){
+                    resultsTextView.setText(String.valueOf(total));
+                    total = total + diceList.get(i);
+                }
+
+                //Add the modifier
+                total = total + modifier;
+
+                resultsTextView.setText(String.valueOf(total));
             }
         });
         //endregion
@@ -86,9 +122,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 diceSides = 8;
+                diceList.clear();
+                total = 0;
 
-                int buttonRand = rand.nextInt(diceAmount * diceSides) + modifier + 1;
-                resultsTextView.setText(String.valueOf(buttonRand));
+                //Roll each dice
+                for (int i = 0; i < diceAmount; i++){
+                    buttonRand = rand.nextInt(diceSides)+ 1;
+                    diceList.add(buttonRand);
+                }
+
+                //Sum each dice
+                for (int i = 0; i < diceAmount; i++){
+                    resultsTextView.setText(String.valueOf(total));
+                    total = total + diceList.get(i);
+                }
+
+                //Add the modifier
+                total = total + modifier;
+
+                resultsTextView.setText(String.valueOf(total));
             }
         });
         //endregion
@@ -98,9 +150,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 diceSides = 10;
+                diceList.clear();
+                total = 0;
 
-                int buttonRand = rand.nextInt(diceAmount * diceSides) + modifier + 1;
-                resultsTextView.setText(String.valueOf(buttonRand));
+                //Roll each dice
+                for (int i = 0; i < diceAmount; i++){
+                    buttonRand = rand.nextInt(diceSides)+ 1;
+                    diceList.add(buttonRand);
+                }
+
+                //Sum each dice
+                for (int i = 0; i < diceAmount; i++){
+                    resultsTextView.setText(String.valueOf(total));
+                    total = total + diceList.get(i);
+                }
+
+                //Add the modifier
+                total = total + modifier;
+
+                resultsTextView.setText(String.valueOf(total));
             }
         });
         //endregion
@@ -110,9 +178,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 diceSides = 12;
+                diceList.clear();
+                total = 0;
 
-                int buttonRand = rand.nextInt(diceAmount * diceSides) + modifier + 1;
-                resultsTextView.setText(String.valueOf(buttonRand));
+                //Roll each dice
+                for (int i = 0; i < diceAmount; i++){
+                    buttonRand = rand.nextInt(diceSides)+ 1;
+                    diceList.add(buttonRand);
+                }
+
+                //Sum each dice
+                for (int i = 0; i < diceAmount; i++){
+                    resultsTextView.setText(String.valueOf(total));
+                    total = total + diceList.get(i);
+                }
+
+                //Add the modifier
+                total = total + modifier;
+
+                resultsTextView.setText(String.valueOf(total));
             }
         });
         //endregion
@@ -122,9 +206,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 diceSides = 20;
+                diceList.clear();
+                total = 0;
 
-                int buttonRand = rand.nextInt(diceAmount * diceSides) + modifier + 1;
-                resultsTextView.setText(String.valueOf(buttonRand));
+                //Roll each dice
+                for (int i = 0; i < diceAmount; i++){
+                    buttonRand = rand.nextInt(diceSides)+ 1;
+                    diceList.add(buttonRand);
+                }
+
+                //Sum each dice
+                for (int i = 0; i < diceAmount; i++){
+                    resultsTextView.setText(String.valueOf(total));
+                    total = total + diceList.get(i);
+                }
+
+                //Add the modifier
+                total = total + modifier;
+
+                resultsTextView.setText(String.valueOf(total));
             }
         });
         //endregion
@@ -134,9 +234,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 diceSides = 100;
+                diceList.clear();
+                total = 0;
 
-                int buttonRand = rand.nextInt(diceAmount * diceSides) + modifier + 1;
-                resultsTextView.setText(String.valueOf(buttonRand));
+                //Roll each dice
+                for (int i = 0; i < diceAmount; i++){
+                    buttonRand = rand.nextInt(diceSides)+ 1;
+                    diceList.add(buttonRand);
+                }
+
+                //Sum each dice
+                for (int i = 0; i < diceAmount; i++){
+                    resultsTextView.setText(String.valueOf(total));
+                    total = total + diceList.get(i);
+                }
+
+                //Add the modifier
+                total = total + modifier;
+
+                resultsTextView.setText(String.valueOf(total));
             }
         });
         //endregion
