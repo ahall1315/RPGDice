@@ -70,7 +70,7 @@ public class DiceFragment extends Fragment {
         modifierTextView = view.findViewById(R.id.modifierTextView);
         resultsTextView = view.findViewById(R.id.resultsTextView);
 
-        List<Integer> diceList = new ArrayList<>();
+        ArrayList<Integer> diceList = new ArrayList<>();
         Random rand = new Random();
 
         //Setting OnClickListeners for each of the  buttons
