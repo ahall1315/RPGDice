@@ -1,18 +1,25 @@
 package com.example.rpgdice;
 
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.widget.ToggleButton;
+
 import java.util.List;
 import java.util.Random;
+import java.util.ArrayList;
 
 public class DiceFragment extends Fragment {
 
@@ -28,15 +35,36 @@ public class DiceFragment extends Fragment {
     Button buttonDiceIncrement;
     Button buttonModifierDecrement;
     Button buttonModifierIncrement;
+    ToggleButton shakeToggle;
     TextView diceAmountTextView;
     TextView modifierTextView;
-    TextView resultsTextView;
+    static TextView resultsTextView;
 
     int buttonRand = 0;
-    int diceSides = 0;
-    int diceAmount = 1;
+    static int diceSides = 20;
+    static int diceAmount = 1;
     int total = 0;
-    int modifier = 0;
+    static int modifier = 0;
+    private static String arr;
+    static int tot;
+    static boolean shakeFlag = false;
+
+
+    List<Integer> rolls;
+
+    private SensorManager mSensorManager;
+    private static float mAccel;
+    private static float mAccelCurrent;
+    private static float mAccelLast;
+    private View decorView;
+    private static Random rand = new Random();
+    private static int num;
+    private static String numArr = "";
+
+
+
+
+
 
     public DiceFragment(){
 
@@ -66,206 +94,23 @@ public class DiceFragment extends Fragment {
         buttonDiceIncrement = view.findViewById(R.id.diceIncrementButton);
         buttonModifierDecrement = view.findViewById(R.id.modifierDecrementButton);
         buttonModifierIncrement = view.findViewById(R.id.modifierIncrementButton);
+        shakeToggle = view.findViewById(R.id.shakeToggleButton);
         diceAmountTextView = view.findViewById(R.id.diceAmountTextView);
         modifierTextView = view.findViewById(R.id.modifierTextView);
         resultsTextView = view.findViewById(R.id.resultsTextView);
-
-        ArrayList<Integer> diceList = new ArrayList<>();
+        numArr = "";
+        List<Integer> diceList = new ArrayList<>();
         Random rand = new Random();
 
-        //Setting OnClickListeners for each of the  buttons
-        //region d4ImageButton
-        d4ImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            diceSides = 4;
-            diceList.clear();
-            total = 0;
 
-            //Roll each dice
-            for (int i = 0; i < diceAmount; i++){
-                buttonRand = rand.nextInt(diceSides)+ 1;
-                diceList.add(buttonRand);
-            }
-
-            //Sum each dice
-            for (int i = 0; i < diceAmount; i++){
-                resultsTextView.setText(String.valueOf(total));
-                total = total + diceList.get(i);
-            }
-
-                //Add the modifier
-                total = total + modifier;
-
-                resultsTextView.setText(String.valueOf(total));
-            }
-        });
-        //endregion
-
-        //region d6ImageButton
-        d6ImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                diceSides = 6;
-                diceList.clear();
-                total = 0;
-
-                //Roll each dice
-                for (int i = 0; i < diceAmount; i++){
-                    buttonRand = rand.nextInt(diceSides)+ 1;
-                    diceList.add(buttonRand);
+        //region Shake Toggle Button
+        shakeToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    shakeFlag = true;
+                } else {
+                    shakeFlag = false;
                 }
-
-                //Sum each dice
-                for (int i = 0; i < diceAmount; i++){
-                    resultsTextView.setText(String.valueOf(total));
-                    total = total + diceList.get(i);
-                }
-
-                //Add the modifier
-                total = total + modifier;
-
-                resultsTextView.setText(String.valueOf(total));
-            }
-        });
-        //endregion
-
-        //region d8ImageButton
-        d8ImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                diceSides = 8;
-                diceList.clear();
-                total = 0;
-
-                //Roll each dice
-                for (int i = 0; i < diceAmount; i++){
-                    buttonRand = rand.nextInt(diceSides)+ 1;
-                    diceList.add(buttonRand);
-                }
-
-                //Sum each dice
-                for (int i = 0; i < diceAmount; i++){
-                    resultsTextView.setText(String.valueOf(total));
-                    total = total + diceList.get(i);
-                }
-
-                //Add the modifier
-                total = total + modifier;
-
-                resultsTextView.setText(String.valueOf(total));
-            }
-        });
-        //endregion
-
-        //region d10ImageButton
-        d10ImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                diceSides = 10;
-                diceList.clear();
-                total = 0;
-
-                //Roll each dice
-                for (int i = 0; i < diceAmount; i++){
-                    buttonRand = rand.nextInt(diceSides)+ 1;
-                    diceList.add(buttonRand);
-                }
-
-                //Sum each dice
-                for (int i = 0; i < diceAmount; i++){
-                    resultsTextView.setText(String.valueOf(total));
-                    total = total + diceList.get(i);
-                }
-
-                //Add the modifier
-                total = total + modifier;
-
-                resultsTextView.setText(String.valueOf(total));
-            }
-        });
-        //endregion
-
-        //region d12ImageButton
-        d12ImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                diceSides = 12;
-                diceList.clear();
-                total = 0;
-
-                //Roll each dice
-                for (int i = 0; i < diceAmount; i++){
-                    buttonRand = rand.nextInt(diceSides)+ 1;
-                    diceList.add(buttonRand);
-                }
-
-                //Sum each dice
-                for (int i = 0; i < diceAmount; i++){
-                    resultsTextView.setText(String.valueOf(total));
-                    total = total + diceList.get(i);
-                }
-
-                //Add the modifier
-                total = total + modifier;
-
-                resultsTextView.setText(String.valueOf(total));
-            }
-        });
-        //endregion
-
-        //region d20ImageButton
-        d20ImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                diceSides = 20;
-                diceList.clear();
-                total = 0;
-
-                //Roll each dice
-                for (int i = 0; i < diceAmount; i++){
-                    buttonRand = rand.nextInt(diceSides)+ 1;
-                    diceList.add(buttonRand);
-                }
-
-                //Sum each dice
-                for (int i = 0; i < diceAmount; i++){
-                    resultsTextView.setText(String.valueOf(total));
-                    total = total + diceList.get(i);
-                }
-
-                //Add the modifier
-                total = total + modifier;
-
-                resultsTextView.setText(String.valueOf(total));
-            }
-        });
-        //endregion
-
-        //region d100ImageButton
-        d100ImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                diceSides = 100;
-                diceList.clear();
-                total = 0;
-
-                //Roll each dice
-                for (int i = 0; i < diceAmount; i++){
-                    buttonRand = rand.nextInt(diceSides)+ 1;
-                    diceList.add(buttonRand);
-                }
-
-                //Sum each dice
-                for (int i = 0; i < diceAmount; i++){
-                    resultsTextView.setText(String.valueOf(total));
-                    total = total + diceList.get(i);
-                }
-
-                //Add the modifier
-                total = total + modifier;
-
-                resultsTextView.setText(String.valueOf(total));
             }
         });
         //endregion
@@ -367,6 +212,63 @@ public class DiceFragment extends Fragment {
                 return true;
             }
         });
+
         //endregion
     }
+
+    public static String getArr(){
+        return numArr;
+    }
+    public static int getDiceAmt(){
+        return diceAmount;
+    }
+    public static void setDiceAmt(int amt){
+        diceAmount = amt;
+    }
+    public static int Roll(int sides, int diceAmt) {
+
+
+        tot = 0;
+        for (int j = 0; j<diceAmt;j++)
+        {
+            num = rand.nextInt(sides)+1;
+
+            tot += num;
+            if (j == diceAmt - 1)
+                numArr += Integer.toString(num);
+            else
+                numArr += Integer.toString(num)+", ";
+
+            //resultsTextView.s
+        }
+        tot = tot+modifier;
+        resultsTextView.setText(String.valueOf(tot));
+        HistoryFragment.setHistory(numArr, diceAmt, sides, tot, modifier);
+        numArr = "";
+
+        return num;
+    }
+
+
+    public static final SensorEventListener mSensorListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            float x = event.values[0];
+            float y = event.values[1];
+            float z = event.values[2];
+            mAccelLast = mAccelCurrent;
+            mAccelCurrent = (float) Math.sqrt((double) (x * x + y * y + z * z));
+            float delta = mAccelCurrent - mAccelLast;
+            mAccel = mAccel * 0.9f + delta;
+            if (mAccel > 10 && shakeFlag)
+            {
+                Roll(MainActivity.diceSides, diceAmount);
+            }
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy)
+        {
+        }
+    };
 }
