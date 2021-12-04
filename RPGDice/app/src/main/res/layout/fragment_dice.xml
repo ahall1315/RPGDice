@@ -1,54 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?attr/selectableItemBackgroundBorderless"
-    tools:context=".MainActivity">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="?attr/selectableItemBackgroundBorderless"
+tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/modifierTextView"
-        android:layout_width="96dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="32dp"
-        android:background="@android:drawable/editbox_background"
-        android:gravity="center"
-        android:text="+0"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+<TextView
+    android:id="@+id/modifierTextView"
+    android:layout_width="96dp"
+    android:layout_height="42dp"
+    android:layout_marginEnd="64dp"
+    android:layout_marginBottom="32dp"
+    android:background="@android:drawable/editbox_background"
+    android:gravity="center"
+    android:text="+0"
+    android:textSize="24sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/modifierIncrementButton"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="32dp"
-        android:text="+"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/modifierTextView" />
+<Button
+    android:id="@+id/modifierIncrementButton"
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    android:layout_marginBottom="32dp"
+    android:onClick="incMod"
+    android:text="+"
+    android:textSize="16sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/modifierTextView" />
 
-    <Button
-        android:id="@+id/modifierDecrementButton"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="32dp"
-        android:text="-"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/modifierTextView" />
+<Button
+    android:id="@+id/modifierDecrementButton"
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    android:layout_marginBottom="32dp"
+    android:onClick="decMod"
+    android:text="-"
+    android:textSize="16sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/modifierTextView" />
 
-    <Button
-        android:id="@+id/diceDecrementButton"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="32dp"
-        android:text="-"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/diceAmountTextView" />
+<Button
+    android:id="@+id/diceDecrementButton"
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    android:layout_marginBottom="32dp"
+    android:onClick="decAmt"
+    android:text="-"
+    android:textSize="16sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/diceAmountTextView" />
 
     <ImageButton
         android:id="@+id/d8ImageButton"
@@ -56,9 +59,11 @@
         android:layout_height="64dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/d8"
+        android:onClick="Roll8"
         app:layout_constraintEnd_toStartOf="@+id/d10ImageButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="?attr/selectableItemBackground" />
 
     <ImageButton
         android:id="@+id/d4ImageButton"
@@ -66,19 +71,21 @@
         android:layout_height="64dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
+        android:background="@drawable/d4"
+        android:onClick="Roll4"
+        android:src="?attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/d20TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="d20"
-        app:layout_constraintEnd_toEndOf="@+id/d20ImageButton"
-        app:layout_constraintStart_toStartOf="@+id/d20ImageButton"
-        app:layout_constraintTop_toBottomOf="@+id/d20ImageButton" />
+<TextView
+    android:id="@+id/d20TextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:text="d20"
+    app:layout_constraintEnd_toEndOf="@+id/d20ImageButton"
+    app:layout_constraintStart_toStartOf="@+id/d20ImageButton"
+    app:layout_constraintTop_toBottomOf="@+id/d20ImageButton" />
 
     <ImageButton
         android:id="@+id/d20ImageButton"
@@ -86,9 +93,11 @@
         android:layout_height="64dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="160dp"
+        android:background="@drawable/d20"
+        android:onClick="Roll20"
         app:layout_constraintStart_toEndOf="@+id/d12ImageButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="?attr/selectableItemBackground" />
 
     <ImageButton
         android:id="@+id/d100ImageButton"
@@ -96,9 +105,11 @@
         android:layout_height="64dp"
         android:layout_marginTop="160dp"
         android:layout_marginEnd="128dp"
+        android:background="@drawable/d100"
+        android:onClick="Roll100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="?attr/selectableItemBackground" />
 
     <ImageButton
         android:id="@+id/d12ImageButton"
@@ -106,40 +117,42 @@
         android:layout_height="64dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="160dp"
+        android:background="@drawable/d12"
+        android:onClick="Roll12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="?attr/selectableItemBackground" />
 
-    <TextView
-        android:id="@+id/d100TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="d100"
-        app:layout_constraintEnd_toEndOf="@+id/d100ImageButton"
-        app:layout_constraintStart_toStartOf="@+id/d100ImageButton"
-        app:layout_constraintTop_toBottomOf="@+id/d100ImageButton" />
+<TextView
+    android:id="@+id/d100TextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:text="d100"
+    app:layout_constraintEnd_toEndOf="@+id/d100ImageButton"
+    app:layout_constraintStart_toStartOf="@+id/d100ImageButton"
+    app:layout_constraintTop_toBottomOf="@+id/d100ImageButton" />
 
-    <TextView
-        android:id="@+id/d10TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="d10"
-        app:layout_constraintEnd_toEndOf="@+id/d10ImageButton"
-        app:layout_constraintHorizontal_bias="0.525"
-        app:layout_constraintStart_toStartOf="@+id/d10ImageButton"
-        app:layout_constraintTop_toBottomOf="@+id/d10ImageButton" />
+<TextView
+    android:id="@+id/d10TextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:text="d10"
+    app:layout_constraintEnd_toEndOf="@+id/d10ImageButton"
+    app:layout_constraintHorizontal_bias="0.525"
+    app:layout_constraintStart_toStartOf="@+id/d10ImageButton"
+    app:layout_constraintTop_toBottomOf="@+id/d10ImageButton" />
 
-    <TextView
-        android:id="@+id/d4TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="d4"
-        app:layout_constraintEnd_toEndOf="@+id/d4ImageButton"
-        app:layout_constraintStart_toStartOf="@+id/d4ImageButton"
-        app:layout_constraintTop_toBottomOf="@+id/d4ImageButton" />
+<TextView
+    android:id="@+id/d4TextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:text="d4"
+    app:layout_constraintEnd_toEndOf="@+id/d4ImageButton"
+    app:layout_constraintStart_toStartOf="@+id/d4ImageButton"
+    app:layout_constraintTop_toBottomOf="@+id/d4ImageButton" />
 
     <ImageButton
         android:id="@+id/d10ImageButton"
@@ -147,19 +160,21 @@
         android:layout_height="64dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/d10"
+        android:onClick="Roll10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="?attr/selectableItemBackground" />
 
-    <TextView
-        android:id="@+id/d12TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="d12"
-        app:layout_constraintEnd_toEndOf="@+id/d12ImageButton"
-        app:layout_constraintStart_toStartOf="@+id/d12ImageButton"
-        app:layout_constraintTop_toBottomOf="@+id/d12ImageButton" />
+<TextView
+    android:id="@+id/d12TextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:text="d12"
+    app:layout_constraintEnd_toEndOf="@+id/d12ImageButton"
+    app:layout_constraintStart_toStartOf="@+id/d12ImageButton"
+    app:layout_constraintTop_toBottomOf="@+id/d12ImageButton" />
 
     <ImageButton
         android:id="@+id/d6ImageButton"
@@ -167,62 +182,85 @@
         android:layout_height="64dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
+        android:background="@drawable/d6"
+        android:onClick="Roll6"
         app:layout_constraintStart_toEndOf="@+id/d4ImageButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="?attr/selectableItemBackground" />
 
-    <TextView
-        android:id="@+id/d6TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="d6"
-        app:layout_constraintEnd_toEndOf="@+id/d6ImageButton"
-        app:layout_constraintStart_toStartOf="@+id/d6ImageButton"
-        app:layout_constraintTop_toBottomOf="@+id/d6ImageButton" />
+<TextView
+    android:id="@+id/d6TextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:text="d6"
+    app:layout_constraintEnd_toEndOf="@+id/d6ImageButton"
+    app:layout_constraintStart_toStartOf="@+id/d6ImageButton"
+    app:layout_constraintTop_toBottomOf="@+id/d6ImageButton" />
 
-    <TextView
-        android:id="@+id/d8TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="d8"
-        app:layout_constraintEnd_toEndOf="@+id/d8ImageButton"
-        app:layout_constraintStart_toStartOf="@+id/d8ImageButton"
-        app:layout_constraintTop_toBottomOf="@+id/d8ImageButton" />
+<TextView
+    android:id="@+id/d8TextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:text="d8"
+    app:layout_constraintEnd_toEndOf="@+id/d8ImageButton"
+    app:layout_constraintStart_toStartOf="@+id/d8ImageButton"
+    app:layout_constraintTop_toBottomOf="@+id/d8ImageButton" />
 
-    <TextView
-        android:id="@+id/diceAmountTextView"
-        android:layout_width="96dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="32dp"
-        android:background="@android:drawable/editbox_background"
-        android:gravity="center"
-        android:text="1d"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+<TextView
+    android:id="@+id/diceAmountTextView"
+    android:layout_width="96dp"
+    android:layout_height="42dp"
+    android:layout_marginStart="64dp"
+    android:layout_marginBottom="32dp"
+    android:background="@android:drawable/editbox_background"
+    android:gravity="center"
+    android:text="1d"
+    android:textSize="24sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/diceIncrementButton"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="32dp"
-        android:text="+"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/diceAmountTextView" />
+<Button
+    android:id="@+id/diceIncrementButton"
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    android:layout_marginBottom="32dp"
+    android:onClick="incAmt"
+    android:text="+"
+    android:textSize="16sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/diceAmountTextView" />
 
-    <TextView
-        android:id="@+id/resultsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:textSize="144sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+<TextView
+    android:id="@+id/resultsTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="96dp"
+    android:textSize="144sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/shakeToggleButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="32dp"
+        android:text="ToggleButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/shakeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="shake"
+        app:layout_constraintEnd_toEndOf="@+id/shakeToggleButton"
+        app:layout_constraintStart_toStartOf="@+id/shakeToggleButton"
+        app:layout_constraintTop_toBottomOf="@+id/shakeToggleButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
