@@ -29,8 +29,8 @@ RPG Dice was also a group project in Distributed and Mobile Systems at Augusta U
 </ul>
 
 <p align="center">
-<img src="Resources/dice.jpg" alt="Dice Page" width="400" height="822">
+<img src="Resources/dice.jpg" alt="Dice Page" width="400" height="822" border="1">
 <br>
 <br>
-<img src="Resources/history.jpg" alt="History Page" width="400" height="822">
+<img src="Resources/history.jpg" alt="History Page" width="400" height="822" border="1">
 </p>
