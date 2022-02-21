@@ -4,10 +4,10 @@
 
 <b><u>Group Members:</u></b>
 <ul>
-    <li>Alex Hall</li>
-    <li>Ethan Hull</li>
-    <li>Benito McClammy</li>
-    <li>Joe Stenger</li>
+    <li><a href="https://github.com/ahall1315" target="_blank">ahall1315</a></li>
+    <li>Ethan H.</li>
+    <li><a href="https://github.com/BMcclammy99" target="_blank">BMcclammy99</a></li>
+    <li><a href="https://github.com/Supersystem473" target="_blank">Supersystem473</a></li>
 </ul>
 
 <h2><b><u>Description:</u></b></h2>
